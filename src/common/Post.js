@@ -1,4 +1,11 @@
-import {View, Text, Image, StyleSheet, TouchableOpacity,FlatList} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  FlatList,
+} from 'react-native';
 import React from 'react';
 import {Images} from '../attech/images/Images';
 
@@ -23,8 +30,7 @@ const postData = [
     postImage: Images.post2,
     likeImg: Images.user3,
     likes: 'Liked by zackjohn and 1,080 others',
-    caption:
-      'You can not dull my sparkle ✨',
+    caption: 'You can not dull my sparkle ✨',
     time: ' 46 min ago',
   },
   {
@@ -35,106 +41,103 @@ const postData = [
     postImage: Images.post3,
     likeImg: Images.user3,
     likes: 'Liked by zackjohn and 400 others',
-    caption:
-      'You can not dull my sparkle ✨',
+    caption: 'You can not dull my sparkle ✨',
     time: '2 hours ago',
   },
 ];
 
 export default function Post() {
-  const renderItem = ({item}) =>{
-    return(
+  const renderItem = ({item}) => {
+    return (
       <>
-      <View
-        style={{
-          paddingVertical: 10,
-          paddingHorizontal: 10,
-          backgroundColor: 'white',
-        }}>
-        <View style={styles.flex}>
+        <View
+          style={{
+            paddingVertical: 10,
+            paddingHorizontal: 10,
+            backgroundColor: 'white',
+          }}>
           <View style={styles.flex}>
-            <Image
-              source={item.userImg}
-              resizeMode={'contain'}
-              style={styles.image}
-            />
-            <View style={{paddingLeft: 8}}>
-              <Text style={styles.userName}>{item.userName}</Text>
-              <Text style={styles.location}>{item.location}</Text>
+            <View style={styles.flex}>
+              <Image
+                source={item.userImg}
+                resizeMode={'contain'}
+                style={styles.image}
+              />
+              <View style={{paddingLeft: 8}}>
+                <Text style={styles.userName}>{item.userName}</Text>
+                <Text style={styles.location}>{item.location}</Text>
+              </View>
+            </View>
+            <View>
+              <TouchableOpacity>
+                <Image
+                  source={Images.moreIcon}
+                  resizeMode={'contain'}
+                  style={{width: 30, height: 4}}
+                />
+              </TouchableOpacity>
             </View>
           </View>
-          <View>
+        </View>
+        <View>
+          <Image
+            source={item.postImage}
+            resizeMode={'contain'}
+            style={{width: '100%', height: 390}}
+          />
+        </View>
+        <View
+          style={{
+            backgroundColor: '#fff',
+            paddingHorizontal: 10,
+            paddingVertical: 8,
+          }}>
+          <View style={styles.flex}>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                width: 100,
+              }}>
+              <TouchableOpacity>
+                <Image source={Images.like} />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Image source={Images.comment} />
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <Image source={Images.massage} />
+              </TouchableOpacity>
+            </View>
             <TouchableOpacity>
               <Image
-                source={Images.moreIcon}
+                source={Images.save}
                 resizeMode={'contain'}
-                style={{width: 30, height: 4}}
+                style={{width: 18}}
               />
             </TouchableOpacity>
           </View>
-        </View>
-      </View>
-      <View>
-        <Image
-          source={item.postImage}
-          resizeMode={'contain'}
-          style={{width: '100%', height: 390}}
-        />
-      </View>
-      <View
-        style={{
-          backgroundColor: '#fff',
-          paddingHorizontal: 10,
-          paddingVertical: 8,
-        }}>
-        <View style={styles.flex}>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              width: 100,
-            }}>
-            <TouchableOpacity>
-              <Image source={Images.like} />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Image source={Images.comment} />
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <Image source={Images.massage} />
-            </TouchableOpacity>
-          </View>
-          <TouchableOpacity>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <Image
-              source={Images.save}
+              source={item.likeImg}
               resizeMode={'contain'}
-              style={{width: 18}}
+              style={{width: 25, height: 23, marginVertical: 8}}
             />
-          </TouchableOpacity>
-        </View>
-        <View style={{flexDirection: 'row', alignItems: 'center'}}>
-          <Image
-            source={item.likeImg}
-            resizeMode={'contain'}
-            style={{width: 25, height: 23, marginVertical: 8}}
-          />
-          <Text style={{paddingLeft: 7, fontSize: 15}}>
-           {item.likes}
+            <Text style={{paddingLeft: 7, fontSize: 15}}>{item.likes}</Text>
+          </View>
+          <Text style={{fontSize: 15, width: 370}}>{item.caption}</Text>
+          <Text style={{fontSize: 13, color: 'grey', marginTop: 2}}>
+            {item.time}
           </Text>
         </View>
-        <Text style={{fontSize: 15, width: 370}}>
-          {item.caption}
-        </Text>
-        <Text style={{fontSize: 13, color: 'grey',marginTop:2}}>{item.time}</Text>
-      </View>
-    </>
+      </>
     );
-  }
+  };
   return (
     <FlatList
       data={postData}
       renderItem={renderItem}
-          keyExtractor={item => item.id}
+      keyExtractor={item => item.id}
     />
   );
 }

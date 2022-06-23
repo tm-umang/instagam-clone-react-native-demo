@@ -1,6 +1,7 @@
 import {View, Text, Image, TouchableOpacity,StyleSheet} from 'react-native';
 import React from 'react';
 import {Images} from '../attech/images/Images';
+import {useNavigation} from '@react-navigation/native';
 
 const styles = StyleSheet.create({
   header:{
@@ -22,12 +23,13 @@ const styles = StyleSheet.create({
 })
 
 export default function Header() {
+  const navigation = useNavigation();
   return (
     <View
       style={styles.header}>
       <View>
-        <TouchableOpacity>
-          <Image source={Images.cameraIcon} resizeMode={'contain'} />
+        <TouchableOpacity  onPress={() => navigation.navigate('Camera')} >
+          <Image source={Images.cameraIcon} resizeMode={'contain'}/>
         </TouchableOpacity>
       </View>
       <View style={{paddingLeft: 30}}>
@@ -41,10 +43,10 @@ export default function Header() {
       </View>
       <View
         style={styles.flex}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Igtv')}>
           <Image source={Images.igTv} resizeMode={'contain'} />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Chat')}>
           <Image source={Images.massage} resizeMode={'contain'} />
         </TouchableOpacity>
       </View>

@@ -19,6 +19,8 @@ target 'instaclone' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  pod 'react-native-pager-view', :path => '../node_modules/react-native-pager-view'
+
   target 'instacloneTests' do
     inherit! :complete
     # Pods for testing

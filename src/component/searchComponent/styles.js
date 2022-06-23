@@ -4,7 +4,6 @@ export const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
     backgroundColor:'#FFF',
     // backgroundColor: 'gray',
   },
@@ -30,6 +29,5 @@ export const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     overflow: 'hidden',
-    // borderRadius: 18,
   },
 });

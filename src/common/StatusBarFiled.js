@@ -3,7 +3,7 @@ import React from "react";
 
 const StatusBarField = ({backgroundColor}) => {
   return (
-    <StatusBar barStyle="dark-content" backgroundColor={backgroundColor}/>
+    <StatusBar barStyle="light-content" backgroundColor={backgroundColor}/>
   );
 };
 export default StatusBarField;

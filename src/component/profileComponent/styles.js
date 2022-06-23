@@ -3,28 +3,32 @@ import {StyleSheet} from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:'#fff'
+    backgroundColor:'#fff',
   },
   profilephoto: {
+    height: 95,
+    width: 95,
+    alignSelf: 'center',
     borderColor: '#C7C7CC',
-    borderWidth: 2,
+    // borderWidth: 3,
     borderRadius: 70,
-    width: 116,
   },
   number: {
-    fontSize: 20,
+    fontSize: 18,
+    color:'#262626',
     textAlign: 'center',
     fontWeight: '600',
   },
   details: {
-    fontSize: 16,
+    fontSize: 17,
+    color:'#262626',
     fontWeight: '400',
   },
   profilelayout: {
     flexDirection: 'row',
     alignSelf: 'center',
     paddingRight: 15,
-    width: 230,
+    width: 252,
     justifyContent: 'space-between',
   },
   editButton: {

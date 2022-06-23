@@ -10,6 +10,8 @@ import {
 import React from 'react';
 import {styles} from './styles';
 import {Images} from '../../attech//images/Images';
+import ProfileTab from '../../common/ProfileTab';
+import { useNavigation } from '@react-navigation/native';
 
 const Data = [
   {
@@ -35,6 +37,7 @@ const Data = [
 ];
 
 export default function ProfileComponent() {
+  const navigation = useNavigation(); 
   const renderItem = ({item}) => {
     return (
       <View style={{marginHorizontal: 5}}>
@@ -51,7 +54,7 @@ export default function ProfileComponent() {
   };
   return (
     <View style={styles.container}>
-      <SafeAreaView style={{marginHorizontal:10}}>
+      <SafeAreaView style={{marginHorizontal: 10}}>
         <View
           style={{
             flexDirection: 'row',
@@ -89,7 +92,7 @@ export default function ProfileComponent() {
             </TouchableOpacity>
           </View>
         </View>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <View
             style={{
               flexDirection: 'row',
@@ -97,13 +100,13 @@ export default function ProfileComponent() {
               justifyContent: 'space-between',
               marginTop: 10,
             }}>
-            <View style={styles.profilephoto}>
-              <Image
-                source={Images.user1}
-                resizeMode={'contain'}
-                style={{height: 112, width: 104, alignSelf: 'center'}}
-              />
-            </View>
+            {/* <View style={styles.profilephoto}> */}
+            <Image
+              source={Images.user1}
+              resizeMode={'contain'}
+              style={styles.profilephoto}
+            />
+            {/* </View> */}
             <View style={styles.profilelayout}>
               <View>
                 <View>
@@ -140,21 +143,25 @@ export default function ProfileComponent() {
             </Text>
           </View>
           <View style={styles.editButton}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate('EditProfile')}>
               <Text style={{textAlign: 'center', fontWeight: '500'}}>
                 Edit Profile
               </Text>
             </TouchableOpacity>
           </View>
-          <ScrollView horizontal>
+
             <FlatList
               data={Data}
               renderItem={renderItem}
               keyExtractor={item => item.id}
-              contentContainerStyle={{flexDirection: 'row'}}
+              horizontal
+              contentContainerStyle={{flexDirection: 'row',}}
             />
-          </ScrollView>
+
           <View style={styles.line}></View>
+          <View style={{height: 600}}>
+            <ProfileTab />
+          </View>
         </ScrollView>
       </SafeAreaView>
     </View>
